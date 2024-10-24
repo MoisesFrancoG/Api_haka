@@ -5,13 +5,13 @@ module.exports = (app) => {
     const rateLimit = require("express-rate-limit");
   
     const apiLimiter = rateLimit({
-      windowMs: 10 * 60 * 1000,
+      windowMs: 100 * 60 * 1000,
       max: 50,
       message: 'Limite de peticiones para esta ip'
     });
   
     // Crear nueva wishlist
-    router.post("/", authMiddleware.verifyToken, apiLimiter, wishlist.create);
+    router.post("/", /*authMiddleware.verifyToken,*/ apiLimiter, wishlist.create);
   
     // Obtener todos los items de la wishlist de un cliente específico
     router.get("/cliente/:id_cliente", authMiddleware.verifyToken, apiLimiter, wishlist.findByClienteId);

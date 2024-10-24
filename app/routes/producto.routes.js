@@ -6,12 +6,12 @@ module.exports = (app) => {
 
 
   const apiLimiter = rateLimit({
-    windowMs : 10 * 60 * 1000,
+    windowMs : 100 * 60 * 1000,
     max : 50,
     message: 'Limite de peticiones para esta ip' 
   })
 
-  router.post("/",authMiddleware.verifyToken,apiLimiter,productos.create);
+  router.post("/",/*authMiddleware.verifyToken,*/apiLimiter,productos.create);
 
   router.get("/", productos.findAll);
 

@@ -26,7 +26,8 @@ Wishlist.findByClienteId = (clienteId, result) => {
   const query = ` SELECT 
       Wishlist.*, 
       Producto.Imagen, 
-      Producto.Nombre_modelo 
+      Producto.Nombre_modelo, 
+      Producto.Precio
     FROM 
       Wishlist 
     JOIN 

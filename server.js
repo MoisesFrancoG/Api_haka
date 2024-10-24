@@ -6,7 +6,7 @@ const app = express();
 const path = require("path");
 
 const corsOptions = {
-origin: 'https://athleticstore.integrador.xyz', // Permitir solicitudes
+origin: '*', // Permitir solicitudes
 methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
 credentials: true, // Permitir el envío de credenciales
 optionsSuccessStatus: 204 // Estado para opciones exitosas
@@ -24,7 +24,7 @@ require("./app/routes/Pedido.routes.js")(app);
 require("./app/routes/Detalle_pedido.routes.js")(app);
 require("./app/routes/Wishlist.routes.js")(app);
 
-app.use("/uploads",express.static(path.join(__dirname,"/uploads")));
+app.use("/uploads",express.static('uploads'));
 
 // set port, listen for requests
 const options = {

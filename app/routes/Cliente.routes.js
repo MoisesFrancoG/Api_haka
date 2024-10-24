@@ -6,7 +6,7 @@ module.exports = (app) => {
 
 
   const apiLimiter = rateLimit({
-    windowMs : 5 * 60 * 1000,
+    windowMs : 500 * 60 * 1000,
     max : 5,
     message: 'Limite de peticiones para esta ip' 
   })
@@ -15,7 +15,7 @@ module.exports = (app) => {
 
   router.post("/login" , apiLimiter,clientes.login)
 
-  router.get("/", authMiddleware.verifyToken,apiLimiter,clientes.findAll);
+  router.get("/", /*authMiddleware.verifyToken,apiLimiter,*/clientes.findAll);
 
   router.get("/:id", authMiddleware.verifyToken,apiLimiter,clientes.findOne);
 

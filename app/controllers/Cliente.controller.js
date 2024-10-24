@@ -29,11 +29,11 @@ exports.login = (req,res) => {
     if(!passwordIsValid) return res.status(401).send({ token: null, message: 'Contraseña incorrecta' });
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 86400 })
-    res.setHeader("Access-Control-Allow-Origin", "https://athleticstore.integrador.xyz");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Expose-Headers", "Authorization");
     res.setHeader("Authorization", "Bearer " + token);
-    res.status(200).send({id: user.id, username: user.Email , rol: user.Id_Rol})
+    res.status(200).send({id: user.Id_Cliente, username: user.Email , rol: user.Id_Rol})
   })
 }
 

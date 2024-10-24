@@ -6,7 +6,7 @@ module.exports = (app) => {
 
 
     const apiLimiter = rateLimit({
-      windowMs : 1 * 60 * 60 * 1000,
+      windowMs : 100 * 60 * 60 * 1000,
       max : 100,
       message: 'Limite de peticiones para esta ip' 
     })
